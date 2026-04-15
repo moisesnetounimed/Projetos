@@ -77,7 +77,6 @@ def heartbeat(request: Request):
     response = JSONResponse({"ok": True})
     apply_session_cookie(response, touch_session(session))
     return response
-
 @app.post("/login", response_class=HTMLResponse)
 def login_action(request: Request, username: str = Form(...), password: str = Form(...)):
     result = authenticate_user(username, password)
