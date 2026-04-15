@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', path='css/submodulo.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="submod-page">
+  <div class="submod-card">
+    <div class="submod-header">
+      <div class="submod-badge">
+        <span>Submódulo</span>
+      </div>
+
+      <h1 class="submod-title">{{ submodule.nm_submodulo }}</h1>
+
+      {% if submodule.ds_descricao %}
+      <p class="submod-description">{{ submodule.ds_descricao }}</p>
+      {% endif %}
+    </div>
+
+    <hr class="submod-divider">
+
+    <div class="submod-info-box">
+      <p><strong>Menu:</strong> {{ submodule.nm_menu }}</p>
+      <p><strong>Módulo:</strong> {{ submodule.nm_modulo }}</p>
+      <p><strong>Tipo de abertura:</strong> {{ submodule.tp_abertura }}</p>
+      <p><strong>Tipo de tela:</strong> {{ submodule.tp_tela }}</p>
+
+      {% if submodule.ds_procedure %}
+      <p><strong>Procedure:</strong> {{ submodule.ds_procedure }}</p>
+      {% endif %}
+    </div>
+
+    <p class="submod-empty" style="margin-top: 18px;">
+      Esta funcionalidade ainda não possui uma tela específica cadastrada.
+    </p>
+  </div>
+</div>
+{% endblock %}

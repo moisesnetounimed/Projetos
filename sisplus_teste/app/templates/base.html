@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SISPLUS - Unimed Sorocaba</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/layout.css') }}" />
+    {% block head_extra %}
+
+    {% endblock %}
+    <link rel="icon" href="https://www.unimedsorocaba.coop.br/repositorio/imagens/icones/favicon.ico" />
+  </head>
+
+  <body>
+    {% include 'partials/sidebar.html' %}
+    {% include 'partials/navbar.html' %}
+
+    <main class="app-main">
+      <div class="app-content">
+        {% block content %}
+
+        {% endblock %}
+      </div>
+      {% include 'partials/footer.html' %}
+    </main>
+
+    {% include 'partials/terms_modal.html' %}
+    <script>
+    window.SISPLUS_SESSION_TTL_MINUTES = {{ session_ttl_minutes | tojson }};
+  </script>
+    <script src="{{ url_for('static', path='js/terms_modal.js') }}"></script>
+    <script src="{{ url_for('static', path='js/idle_timeout.js') }}"></script>
+  </body>
+</html>

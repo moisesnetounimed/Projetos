@@ -1,0 +1,225 @@
+.special-page {
+    min-height: calc(100vh - 160px);
+    padding: 32px 24px 40px;
+}
+
+.special-shell {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.special-header {
+    margin-bottom: 24px;
+}
+
+
+.special-title {
+    margin: 0;
+    font-size: 34px;
+    font-weight: 800;
+    color: #12355b;
+}
+
+.special-description {
+    margin: 8px 0 0;
+    color: #5b6b7f;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.special-card {
+    background: #ffffff;
+    border: 1px solid #dbe5dd;
+    border-radius: 22px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    margin-bottom: 22px;
+}
+
+.special-card-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #12355b;
+    margin-bottom: 20px;
+}
+
+.special-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.special-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.special-field-full {
+    margin-top: 20px;
+}
+
+.special-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #12355b;
+}
+
+.special-required {
+    color: #d92d20;
+}
+
+.special-input,
+.special-textarea {
+    width: 100%;
+    border: 1px solid #cfd8d3;
+    border-radius: 14px;
+    background: #f9fbfa;
+    color: #16324f;
+    font-size: 15px;
+    padding: 14px 16px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.special-input:focus,
+.special-textarea:focus {
+    border-color: #00995d;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(0, 153, 93, 0.10);
+}
+
+.special-textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.special-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.special-btn {
+    border: 0;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #00995d, #0a7f52);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 800;
+    padding: 14px 28px;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(0, 153, 93, 0.18);
+    transition: transform .15s ease, box-shadow .2s ease;
+}
+
+.special-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px rgba(0, 153, 93, 0.22);
+}
+
+.special-table-wrap {
+    overflow-x: auto;
+    border: 1px solid #e2e8e4;
+    border-radius: 16px;
+}
+
+.special-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.special-table thead th {
+    background: #f4faf6;
+    color: #12355b;
+    font-size: 13px;
+    font-weight: 800;
+    text-align: left;
+    padding: 14px 16px;
+    border-bottom: 1px solid #e2e8e4;
+}
+
+.special-table tbody td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #eef2ef;
+    color: #31455b;
+    font-size: 14px;
+}
+
+.special-table tbody tr:hover {
+    background: #fbfdfb;
+}
+
+.th-check,
+.td-check {
+    width: 52px;
+    text-align: center !important;
+}
+
+.status-pill {
+    display: inline-block;
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.status-pill-on {
+    background: #edf9f1;
+    color: #0f7a43;
+    border: 1px solid #bfe3cc;
+}
+
+.status-pill-off {
+    background: #fff3f3;
+    color: #a53030;
+    border: 1px solid #f0caca;
+}
+
+.special-empty {
+    padding: 18px;
+    border-radius: 14px;
+    background: #f9fbfa;
+    border: 1px dashed #cfd8d3;
+    color: #5e7085;
+}
+
+.special-feedback {
+    padding: 12px 14px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.special-feedback-success {
+    background: #edf9f1;
+    border: 1px solid #b7e1c7;
+    color: #0f5132;
+}
+
+.special-feedback-error {
+    background: #fff1f1;
+    border: 1px solid #f0c2c2;
+    color: #842029;
+}
+
+@media (max-width: 900px) {
+    .special-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .special-title {
+        font-size: 28px;
+    }
+
+    .special-actions {
+        justify-content: stretch;
+    }
+
+    .special-btn {
+        width: 100%;
+    }
+}

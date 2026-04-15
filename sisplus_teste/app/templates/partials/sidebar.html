@@ -1,0 +1,49 @@
+<aside class="app-sidebar">
+  <nav class="sidebar-nav">
+
+    <div class="sidebar-group">
+      <a href="/"><img src="/static/img/home.png" alt="Icone-Casa"></a>
+    </div>
+
+    {% for menu in sidebar_items %}
+    <div class="sidebar-group">
+      <a href="{% if menu.tag == 'contabilidade' %}/contabil{% elif menu.tag == 'financeiro' %}/financeiro{% elif menu.tag == 'operacoes' %}/operacoes{% else %}#{% endif %}"
+        class="sidebar-item">
+        <span class="sidebar-icon">
+
+          {% if menu.tag == 'financeiro' %}
+          <img src="/static/img/financeiro.svg" alt="Icone-Financeiro">
+
+          {% elif menu.tag == 'contabilidade' %}
+          <img src="/static/img/contabil.svg" alt="Icone-Contabil">
+
+          {% elif menu.tag == 'operacoes' %}
+          <img src="/static/img/modulo.png" alt="{{ menu.label }}">
+
+          {% else %}
+          <img src="/static/img/modulo.png" alt="{{ menu.label }}">
+          {% endif %}
+
+        </span>
+
+        <span class="sidebar-label">{{ menu.label }}</span>
+      </a>
+
+      {% if menu["modules"] %}
+      <div class="sidebar-submenu">
+        <div class="sidebar-title-menu">{{ menu.label }}</div>
+
+        {% for module in menu["modules"] %}
+        <div class="sidebar-module" style="margin-top:10px;">{{ module.label }}</div>
+
+        {% for submodule in module["submodules"] %}
+        <a href="/app/submodulo/{{ submodule.tag }}" class="sidebar-subitem">{{ submodule.label }}</a>
+        {% endfor %}
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+
+  </nav>
+</aside>

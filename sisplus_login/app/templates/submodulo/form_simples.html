@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', path='css/submodulo.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="submod-page">
+  <div class="submod-card">
+    <div class="submod-header">
+      <div class="submod-badge">
+      </div>
+
+      <h1 class="submod-title">{{ submodule.nm_submodulo }}</h1>
+
+      {% if submodule.ds_descricao %}
+      <p class="submod-description">{{ submodule.ds_descricao }}</p>
+      {% endif %}
+    </div>
+
+    <hr class="submod-divider">
+
+    {% if sucesso %}
+    <div class="submod-feedback submod-feedback-success">
+      {{ sucesso }}
+    </div>
+    {% endif %}
+
+    {% if erro %}
+    <div class="submod-feedback submod-feedback-error">
+      {{ erro }}
+    </div>
+    {% endif %}
+
+    <form method="post" action="/app/submodulo/{{ submodule.ds_tag_submodulo }}" class="submod-form">
+      {% for campo in campos %}
+      <div class="submod-field">
+        <label for="{{ campo.nm_campo }}" class="submod-label">
+          {{ campo.ds_label }}
+          {% if campo.sn_obrigatorio == 'S' %}
+          <span class="submod-required">*</span>
+          {% endif %}
+        </label>
+
+        {% if campo.tp_campo == 'TEXT' %}
+        <input class="submod-input" type="text" id="{{ campo.nm_campo }}" name="{{ campo.nm_campo }}"
+          value="{{ form_data.get(campo.nm_campo, campo.vl_default or '') if form_data else (campo.vl_default or '') }}"
+          placeholder="{{ campo.ds_placeholder or '' }}" {% if campo.sn_obrigatorio=='S' %}required{% endif %}>
+
+        {% elif campo.tp_campo == 'NUMBER' %}
+        <input class="submod-input" type="number" id="{{ campo.nm_campo }}" name="{{ campo.nm_campo }}"
+          value="{{ form_data.get(campo.nm_campo, campo.vl_default or '') if form_data else (campo.vl_default or '') }}"
+          placeholder="{{ campo.ds_placeholder or '' }}" {% if campo.sn_obrigatorio=='S' %}required{% endif %}>
+
+        {% elif campo.tp_campo == 'DATE' %}
+        <input class="submod-input" type="date" id="{{ campo.nm_campo }}" name="{{ campo.nm_campo }}"
+          value="{{ form_data.get(campo.nm_campo, campo.vl_default or '') if form_data else (campo.vl_default or '') }}"
+          {% if campo.sn_obrigatorio=='S' %}required{% endif %}>
+
+        {% elif campo.tp_campo == 'TEXTAREA' %}
+        <textarea class="submod-textarea" id="{{ campo.nm_campo }}" name="{{ campo.nm_campo }}"
+          placeholder="{{ form_data.get(campo.nm_campo, campo.vl_default or '') if form_data else (campo.vl_default or '') }}"
+          {% if campo.sn_obrigatorio=='S' %}required{% endif %}>{{ campo.vl_default or '' }}</textarea>
+
+        {% elif campo.tp_campo == 'SELECT' %}
+        <select class="submod-select" id="{{ campo.nm_campo }}" name="{{ campo.nm_campo }}" {% if
+          campo.sn_obrigatorio=='S' %}required{% endif %}>
+          <option value="">Selecione</option>
+        </select>
+
+        {% else %}
+        <input class="submod-input" type="text" id="{{ campo.nm_campo }}" name="{{ campo.nm_campo }}"
+          value="{{ campo.vl_default or '' }}" placeholder="{{ campo.ds_placeholder or '' }}" {% if
+          campo.sn_obrigatorio=='S' %}required{% endif %}>
+        {% endif %}
+      </div>
+      {% endfor %}
+
+      <div class="submod-actions">
+        <button type="submit" class="submod-btn">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
